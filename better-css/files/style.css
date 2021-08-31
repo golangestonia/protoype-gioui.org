@@ -1,0 +1,221 @@
+/* colors */
+
+:root {
+	--main-fg: #000;
+	--main-fg-lo: #333;
+	--main-bg: #fff;
+	--main-bg-lo: #fbfbfb;
+
+	--accent-fg: #fff;
+	--accent-bg: #078AEA;
+	--accent-bg-hi: #26a3ff;
+
+	--hint-fg: #555;
+}
+
+/* modular scale */
+
+:root {
+	--ratio: 1.5;
+	--s-5: calc(var(--s-4) / var(--ratio));
+	--s-4: calc(var(--s-3) / var(--ratio));
+	--s-3: calc(var(--s-2) / var(--ratio));
+	--s-2: calc(var(--s-1) / var(--ratio));
+	--s-1: calc(var(--s0) / var(--ratio));
+	--s0: 1rem;
+	--s1: calc(var(--s0) * var(--ratio));
+	--s2: calc(var(--s1) * var(--ratio));
+	--s3: calc(var(--s2) * var(--ratio));
+	--s4: calc(var(--s3) * var(--ratio));
+	--s5: calc(var(--s4) * var(--ratio));
+}
+
+:root {
+	--measure: 60ch;
+}
+
+:root {
+	--font-size-base: 1rem;
+	--font-size-biggish: 1.5rem;
+	--font-size-big: 2.0rem;
+}
+
+/* elements */
+
+h3 {
+	font-size: var(--font-size-biggish);
+}
+h2 {
+	font-size: var(--font-size-big);
+}
+
+/* utilities */
+
+.font-size\:base {
+	font-size: var(--font-size-base) !important;
+}
+
+.font-size\:biggish {
+	font-size: var(--font-size-biggish) !important;
+}
+
+.font-size\:big {
+	font-size: var(--font-size-big) !important;
+}
+
+/* universal */
+
+* {
+	max-width: var(--measure);
+}
+
+html,
+body,
+div,
+header,
+nav,
+main,
+footer {
+	max-width: none;
+}
+
+.max-width\:measure {
+	max-width: var(--measure);
+}
+.max-width\:measure\*2 {
+	max-width: calc(var(--measure) * 2);
+}
+.max-width\:measure\/2 {
+	max-width: calc(var(--measure) / 2);
+}
+.max-width\:none {
+	max-width: none;
+}
+
+/*
+cluster layout lays out children,
+such that they flow onto new lines
+with preserving whitespace between the items.
+*/
+
+.lay-cluster {
+	--space: var(--s0);
+	overflow: hidden;
+}
+
+.lay-cluster > * {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: center;
+	margin: calc(var(--space) / 2 * -1);
+}
+
+.lay-cluster.\:justify > * {
+	justify-content: space-between;
+}
+
+.lay-cluster > ul {
+	padding: 0;
+	list-style: none;
+}
+
+.lay-cluster > * > * {
+	margin: calc(var(--space) / 2);
+}
+
+/*
+center layout defines a centered class
+*/
+
+.lay-center {
+	box-sizing: content-box;
+	max-width: var(--measure);
+	margin-left: auto;
+	margin-right: auto;
+	align-items: center;
+	padding-left: var(--s0);
+	padding-right: var(--s0);
+}
+
+/*
+header layout defines positioning for the header content
+*/
+
+.lay-header {
+	box-sizing: content-box;
+	max-width: calc(var(--measure) * 2);
+	margin-left: auto;
+	margin-right: auto;
+	align-items: center;
+	padding-left: var(--s0);
+	padding-right: var(--s0);
+}
+
+/* icons */
+
+.icon {
+	width: 0.75em;
+	width: 1cap;
+	height: 0.75em;
+	height: 1cap;
+}
+
+.with-icon {
+	display: inline-flex;
+	align-items: baseline;
+}
+
+.with-icon .icon {
+	margin-inline-end: var(--s0);
+}
+
+/* styling */
+
+/* global */
+
+html, body { min-height: 100vh; }
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Roboto, Arial, sans-serif;
+
+	display: flex;
+	flex-direction: column;
+}
+
+header {
+	background-color: white;
+	box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
+	z-index: 100;
+
+	padding: var(--s-3);
+}
+
+header nav a {
+	color: var(--main-fg);
+	letter-spacing: 0.02rem;
+
+	padding: calc(var(--s0)/2) var(--s0);
+	text-decoration: none;
+}
+
+header nav a:hover {
+	text-decoration: underline;
+}
+
+.call-to-action {
+	display: inline-block;
+	background: var(--accent-bg);
+	color: var(--accent-fg);
+	border-radius: 3px;
+}
+
+footer {
+	flex-shrink: 0;
+	text-align: center;
+	margin-top: 2rem;
+
+	color: var(--hint-fg);
+}

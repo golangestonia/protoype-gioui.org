@@ -1,0 +1,515 @@
+:root {
+	--main-fg: #000;
+	--main-fg-lo: #333;
+	--main-bg: #fff;
+	--main-bg-lo: #fbfbfb;
+
+	--accent-fg: #fff;
+	--accent-bg: #078AEA;
+	--accent-bg-hi: #26a3ff;
+
+	--hint-fg: #555;
+}
+
+/* Common */
+html, body { min-height: 100vh; }
+
+body {
+	margin: 0;
+	font-family: Roboto, Arial, sans-serif;
+	color: var(--main-fg);
+	background-color: var(--main-bg-lo);
+
+	display: flex;
+	flex-direction: column;
+}
+a {
+	text-decoration: none;
+	color: #007d9c;
+}
+a:hover {
+	text-decoration: underline;
+}
+h1 {
+	font-size: 1.75rem;
+}
+h2, h3 {
+	font-size: 1.25rem;
+}
+h1, h2, h3, h4 {
+	margin: 1.25rem 0 1.25rem;
+	padding: 0;
+	font-weight: 600;
+}
+
+* > .anchor {
+	opacity: 0;
+	text-decoration: none !important;
+}
+:hover > .anchor, .anchor:hover, .anchor:focus {
+	opacity: 1;
+}
+
+/* Code Formatting */
+
+pre {
+	background: #efefef;
+	padding: 0.625rem;
+	border-radius: 0.3125rem;
+	overflow-x: auto;
+	tab-size: 4;
+	-moz-tab-size: 4;
+}
+pre, code {
+	font-family: Menlo, monospace;
+	font-size: 0.875rem;
+}
+p, pre, ul, ol {
+	margin: 1.25rem;
+}
+
+/* Main */
+
+main {
+	width: 100%;
+	flex: 1 0 auto;
+}
+.container {
+	padding: 0 0.5rem;
+	max-width: 70rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+footer {
+	flex-shrink: 0;
+	text-align: center;
+	margin-top: 2rem;
+	font-size: 0.8rem;
+
+	color: var(--hint-fg);
+}
+
+.pagination {
+	display: flex;
+	justify-content: space-between;
+	font-size: 0.9rem;
+	margin: 1rem 0;
+}
+
+/* Docs */
+
+.docs {
+	position: relative;
+	display: flex;
+}
+
+.docs .content {
+	position: relative;
+	padding: 0 1rem;
+	overflow: auto;
+}
+.docs p {
+	margin-left: 0;
+	margin-right: 0;
+}
+.docs nav {
+	order: -1;
+	flex: 0 0 10rem;
+	font-size: 0.9rem;
+
+	border-right: 1px solid #ddd;
+	padding-top: 1rem;
+}
+.docs nav > ul {
+	position: fixed;
+}
+.docs nav ul, .docs nav li {
+	margin: 0;
+	padding: 0;
+}
+.docs nav li {
+	list-style: none;
+	padding-left: 0.5rem;
+}
+.docs nav > ul > li {
+	margin-top: 1em;
+	padding-left: 0;
+}
+.docs nav > ul > li li {
+	list-style: inside "· ";
+}
+
+.docs h1 {
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+.docs h2 {
+	margin-top: 2rem;
+}
+.docs h3, .docs h4 {
+	color: var(--main-fg-lo);
+	margin-top: 1rem;
+	font-size: 1rem;
+}
+
+.docs aside {
+	float: right;
+	padding: 1rem;
+	font-size: 0.9rem;
+}
+.docs aside h4 {
+	padding: 0;
+}
+.docs aside ul, .docs aside li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.docs aside li {
+	list-style: none;
+	padding-left: 1rem;
+}
+
+@media only screen and (max-width: 50rem) {
+	.docs aside {
+		padding: revert;
+		float: revert;
+	}
+}
+@media only screen and (max-width: 40rem) {
+	.docs {
+		display: block;
+	}
+	.docs .content {
+		padding: 0;
+	}
+	.docs nav > ul {
+		order: revert;
+		position: revert;
+		padding-left: 1rem;
+	}
+}
+
+/* Header */
+
+header {
+	display: flex;
+	background-color: var(--main-bg-lo);
+	box-sizing: border-box;
+	box-shadow: 5px 0px 5px rgba(0,0,0,0.4);
+	z-index: 100;
+}
+
+header > nav {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	width: 100%;
+}
+header > nav a {
+	padding: 0.5rem 1rem;
+	margin:  0 0.25rem;
+	color: #000;
+	letter-spacing: 0.02rem;
+	font-size: 1.01rem;
+}
+
+/* TODO, proper menu wrapping for small screen sizes */
+
+header > nav .home {
+	display: flex;
+	align-items: center;
+}
+header > nav .logo {
+	width: 2.5rem;
+	height: 2.5rem;
+}
+header > nav .logo-text {
+	margin-left: 1rem;
+	font-weight: 500;
+	font-size: 1.75rem;
+}
+header > nav .spacer {
+	flex: 1;
+}
+header > nav .call-to-action {
+	margin-left: 1.25rem; /* a.padding: 1rem + a.margin: 0.25rem */
+	background: var(--accent-bg);
+	color: var(--accent-fg);
+	border-radius: 3px;
+}
+
+/* Hero */
+
+h1 {
+	margin: 1.5em 0;
+	font-size: 2.5rem;
+}
+
+h1.hero {
+	text-align: center;
+}
+
+/* Banner */
+
+.banner {
+	position: relative;
+
+	background: white;
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+	border:  1px solid #ddd;
+
+	margin-top: 4rem;
+	padding: 1rem 1rem 1rem 1rem;
+
+	border-radius: 3px;
+}
+
+.banner.centered {
+	text-align: center;
+}
+
+.banner h2 {
+	margin-top: 0;
+	font-size: 1.75rem;
+	border-bottom: 1px solid #ddd;
+	color: var(--main-fg);
+}
+
+.banner p {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.banner.centered p {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 40rem;
+}
+
+.banner .call-to-action {
+	display: block;
+	margin: 0 auto;
+	padding: 0.5em 1.5em;
+	max-width: 16rem;
+
+	font-size: 2em;
+	font-weight: bolder;
+	letter-spacing: 0.15rem;
+
+	background: var(--accent-bg);
+	color: var(--accent-fg);
+
+	border-radius: 3px;
+}
+
+.banner-split {
+	display: flex;
+	align-items: center;
+}
+.banner-split > div    {
+	flex: 1;
+}
+.banner-split > aside {
+	flex: 0;
+	margin-left: 1rem;
+}
+.banner-split > aside img {
+	width: 15rem;
+}
+
+@media only screen and (max-width: 45rem) {
+	.banner-split {
+		flex-direction: column;
+	}
+	.banner-split > aside img {
+		width: revert;
+		max-height: 10rem;
+	}
+}
+
+/* Tiles */
+
+.tiles {
+	display: grid;
+	grid-gap: 1rem;
+	grid-auto-rows: 1fr;
+	grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+}
+
+.tiles::before { /* hack to get square grid */
+	content: '';
+	width: 0;
+	padding-bottom: 100%;
+	grid-row: 1 / 1;
+	grid-column: 1 / 1;
+}
+
+.tiles > *:first-child { /* hack to get square grid */
+	grid-row: 1 / 1;
+	grid-column: 1 / 1;
+}
+
+.tiles > .tile {
+	position: relative;
+
+	background-repeat: none;
+	background-position: center;
+	background-size: cover;
+
+	border: 1px solid #aaa;
+	border-radius: 3px;
+	text-shadow: 0px 2px 2px rgba(0,0,0,0.1), 0px 0px 3px rgba(0,0,0,0.05);
+	color: #fff;
+	transition: box-shadow 0.15s ease-in-out;
+}
+
+.tiles > .tile h3 {
+	margin: 0;
+	background: rgba(0, 0, 0, 0.5);
+	padding: 0.5rem 0.8rem;
+	transition: background 0.15s ease-in-out;
+}
+
+.tiles > .tile:hover h3, .tiles > .tile:focus h3 {
+	background: rgba(0, 0, 0, 0.6);
+}
+
+/* Large Links */
+
+.large-links {
+	display: grid;
+	grid-gap: 1rem;
+	grid-auto-rows: 1fr;
+	grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+.large-link {
+	position: relative;
+	padding: 1.25rem;
+	text-align: center;
+	max-width: 30rem;
+	border: 1px solid #ccc;
+	border-bottom: 5px solid #ccc;
+	border-radius: 3px;
+	color: var(--main-fg);
+	text-decoration: none !important;
+}
+.large-link:hover {
+	border-bottom: 5px solid var(--accent-bg);
+}
+.large-link h2 {
+	margin-top: 0;
+	border-bottom: 1px solid #ccc;
+}
+.large-link .note {
+	position: absolute;
+	bottom: 0;
+	left: 0; right: 0;
+
+	font-style: italic;
+}
+
+/* Sponsors */
+
+.sponsors {
+	display: grid;
+	grid-gap: 2rem;
+	grid-auto-rows: 1fr;
+	grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+}
+.sponsor {
+	font-size: 1.1rem;
+	margin: 1.25rem;
+	text-align: center;
+	max-width: 30rem;
+}
+.sponsor img {
+	max-width: 100%;
+}
+
+/* WASM */
+
+.wasm {
+	position: relative;
+	border: 8px solid var(--accent-bg);
+	border-radius: 6px;
+
+	background: #fff;
+	box-shadow:
+		0 2px 3px rgba(0, 0, 0, 0.2),
+		inset 0 2px 3px rgba(0, 0, 0, 0.4);
+}
+
+.wasm .overlay {
+	position: absolute;
+	left: 0; top: 0; right: 0; bottom: 0;
+
+	background: linear-gradient(to bottom, rgba(0, 0, 255, 0.01), rgba(0, 0, 128, 0.1));
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1;
+}
+.wasm .overlay button {
+	height: 4rem;
+	width: 4rem;
+	border: 0;
+	border-radius: 4rem;
+
+	color: var(--accent-fg);
+	background: var(--accent-bg);
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+
+	font-weight: bold;
+	cursor: pointer;
+
+	transition: background 0.15s, box-shadow 0.15s;
+}
+.wasm .overlay button:focus {
+	border: 3px solid var(--accent-fg);
+	outline: none;
+}
+.wasm .overlay button:hover {
+	background: var(--accent-bg-hi);
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Misc */
+
+[contenteditable]:focus {
+	outline: 0px solid transparent;
+}
+.play {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+.run {
+	position: absolute;
+	right: 0.625rem;
+	bottom: 0.625rem;
+}
+.output {
+	background: var(--main-fg);
+}
+pre.output {
+	color: #e6e6e6;
+}
+.output .stderr,
+.output .error {
+	color: rgb(244, 74, 63);
+}
+.output .system,
+.output .exit {
+	color: rgb(255, 209, 77);
+}
+.window {
+	display: flex;
+}
+.window > iframe {
+	border: 0;
+	overflow: hidden;
+	flex: 1;
+}
