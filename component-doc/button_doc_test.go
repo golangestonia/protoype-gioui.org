@@ -1,8 +1,12 @@
+//+build ignore
+
 package material_test
 
 import (
 	"gioui.org/doc"
+	"gioui.org/layout"
 	"gioui.org/unit"
+	"gioui.org/widget"
 	"gioui.org/widget/material"
 )
 

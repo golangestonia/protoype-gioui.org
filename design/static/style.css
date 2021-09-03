@@ -1,0 +1,5 @@
+html, body { min-height: 100vh; }
+
+html {
+	font-size: calc(1em + 0.3vh);
+}
