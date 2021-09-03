@@ -24,24 +24,8 @@ func DisableCache(w http.ResponseWriter) {
 
 func main() {
 	listen := flag.String("listen", "127.0.0.1:8081", "address to listen")
-	monitor := flag.String("monitor", "templates", "directory to monitor changes")
-	serve := flag.String("serve", "templates", "directory to serve content")
 
 	flag.Parse()
-
-	if !filepath.IsAbs(*monitor) {
-		abs, err := filepath.Abs(*monitor)
-		if err == nil {
-			*monitor = abs
-		}
-	}
-
-	if !filepath.IsAbs(*serve) {
-		abs, err := filepath.Abs(*serve)
-		if err == nil {
-			*serve = abs
-		}
-	}
 
 	router := mux.NewRouter()
 	router.Use(func(h http.Handler) http.Handler {
@@ -55,17 +39,18 @@ func main() {
 	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", staticServer))
 	router.Handle("favicon.ico", staticServer)
 	router.Handle("/~watch.js", watchjs.NewServer(watchjs.Config{
-		Monitor: []string{filepath.Join(*monitor, "**")},
-		Ignore:  watchjs.DefaultIgnore,
+		Monitor: []string{
+			filepath.Join("templates", "**"),
+			filepath.Join("static", "**"),
+		},
+		Ignore: watchjs.DefaultIgnore,
 		OnChange: func(change watch.Change) (string, watchjs.Action) {
+			p := filepath.ToSlash(change.Path)
 			// When change is in staticDir, we instruct the browser live (re)inject the file.
-			if url, ok := watchjs.FileToURL(change.Path, *monitor, "/"); ok {
-				if filepath.Ext(change.Path) == ".css" {
-					return url, watchjs.LiveInject
-				}
-				return url, watchjs.ReloadBrowser
+			if filepath.Ext(change.Path) == ".css" {
+				return p, watchjs.LiveInject
 			}
-			return "/" + filepath.ToSlash(change.Path), watchjs.ReloadBrowser
+			return p, watchjs.ReloadBrowser
 		},
 	}))
 
@@ -89,7 +74,6 @@ func main() {
 	})
 
 	fmt.Println("Listening on:", "http://"+*listen)
-	fmt.Println("Monitoring:", *monitor)
 	err := http.ListenAndServe(*listen, router)
 	if err != nil {
 		log.Fatal(err)
