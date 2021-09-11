@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/gorilla/mux"
@@ -54,24 +55,25 @@ func main() {
 		},
 	}))
 
-	router.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		t, err := template.ParseFiles(allTemplates("templates")...)
-		if err != nil {
-			errorTemplate.Execute(w, err.Error())
-			return
-		}
+	router.NotFoundHandler = http.HandlerFunc(
+		func(w http.ResponseWriter, r *http.Request) {
+			t, err := template.ParseFiles(allTemplates("templates")...)
+			if err != nil {
+				errorTemplate.Execute(w, err.Error())
+				return
+			}
 
-		path := r.URL.Path
-		if path == "/" || path == "" {
-			path = "index"
-		}
-		path += ".html"
+			path := strings.TrimPrefix(r.URL.Path, "/")
+			if path == "/" || path == "" {
+				path = "index"
+			}
+			path += ".html"
 
-		err = t.ExecuteTemplate(w, path, nil)
-		if err != nil {
-			log.Println(err)
-		}
-	})
+			err = t.ExecuteTemplate(w, path, nil)
+			if err != nil {
+				log.Println(err)
+			}
+		})
 
 	fmt.Println("Listening on:", "http://"+*listen)
 	err := http.ListenAndServe(*listen, router)
