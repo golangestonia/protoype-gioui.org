@@ -119,7 +119,7 @@ main {
 #toc {
 	flex: 0 1 auto;
 	min-width: calc(var(--measure) * 0.25);
-	max-width: calc(var(--measure) * 0.4);
+	max-width: calc(var(--measure) * 0.3);
 }
 
 #toc .sticky-toc {
@@ -132,7 +132,7 @@ main {
 	top: 0px;
 
 	flex: 0 1 auto;
-	width: calc(var(--measure) * 0.4);
+	width: calc(var(--measure) * 0.3);
 
 	max-height: 100vh;
 	overflow-y: auto;
