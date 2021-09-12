@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+{{ template "head.html" . }}
+<body>
+	<div class="side-by-side">
+		{{ template "nav.html" 5 }}
+
+		<div id="content">
+			<header>
+				<h1>
+					<div>Showcase</div>
+					<div class="subtitle">What's cooking?</div>
+				</h1>
+			</header>
+
+			<div class="main-and-toc">
+				<main>
+					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi ipsam odit blanditiis vitae ratione fugit cum beatae incidunt hic nemo, veritatis eligendi itaque sapiente repudiandae qui in dicta quidem molestias.</p>
+
+					<article class="card">
+						<div>
+							<a href="#"><h2>Tailscale Android</h2></a>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus labore molestias aspernatur sapiente, vel ab, voluptatem tempora quasi reprehenderit vero quod cupiditate, amet provident aperiam possimus saepe alias dolor enim!</p>
+							<a href="#">Read more ...</a>
+						</div>
+						<div>
+							<img src="/static/placeholder.png" alt="">
+						</div>
+					</article>
+
+					<article class="card">
+						<div>
+							<a href="#"><h2>Scatter.im</h2></a>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus labore molestias aspernatur sapiente, vel ab, voluptatem tempora quasi reprehenderit vero quod cupiditate, amet provident aperiam possimus saepe alias dolor enim!</p>
+							<a href="#">Read more ...</a>
+						</div>
+						<div>
+							<img src="/static/placeholder.png" alt="">
+						</div>
+					</article>
+
+					<article class="card">
+						<div>
+							<a href="#"><h2>sprig</h2></a>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus labore molestias aspernatur sapiente, vel ab, voluptatem tempora quasi reprehenderit vero quod cupiditate, amet provident aperiam possimus saepe alias dolor enim!</p>
+							<a href="#">Read more ...</a>
+						</div>
+						<div>
+							<img src="/static/placeholder.png" alt="">
+						</div>
+					</article>
+
+					<article class="card">
+						<div>
+							<a href="#"><h2>go.dcr</h2></a>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus labore molestias aspernatur sapiente, vel ab, voluptatem tempora quasi reprehenderit vero quod cupiditate, amet provident aperiam possimus saepe alias dolor enim!</p>
+							<a href="#">Read more ...</a>
+						</div>
+						<div>
+							<img src="/static/placeholder.png" alt="">
+						</div>
+					</article>
+
+					{{ template "footer.html" }}
+				</main>
+
+				{{ template "toc.html" }}
+			</div>
+		</div>
+	</div>
+</body>
+</html>

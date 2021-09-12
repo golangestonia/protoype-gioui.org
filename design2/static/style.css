@@ -44,7 +44,7 @@
 }
 
 :root {
-	--measure: 80ch;
+	--measure: 90ch;
 }
 
 :root {
@@ -116,8 +116,8 @@ main {
 
 #toc {
 	flex: 0 1 auto;
-	min-width: calc(var(--measure) * 0.25);
-	max-width: calc(var(--measure) * 0.3);
+	min-width: calc(var(--measure) * 0.2);
+	max-width: calc(var(--measure) * 0.25);
 }
 
 #toc .sticky-toc {
@@ -130,7 +130,7 @@ main {
 	top: 0px;
 
 	flex: 0 1 auto;
-	width: calc(var(--measure) * 0.3);
+	width: calc(var(--measure) * 0.25);
 
 	max-height: 100vh;
 	overflow-y: auto;
@@ -195,6 +195,13 @@ nav a:hover {
 	background: var(--accent-bg-transparent);
 }
 
+nav h2 {
+	font-size: inherit;
+	font-weight: 500;
+	margin-top: var(--s0);
+	margin-bottom: var(--s0);
+}
+
 /* Table of Content styling */
 
 #toc {
@@ -203,11 +210,6 @@ nav a:hover {
 }
 #toc:hover {
 	opacity: 1;
-}
-#toc h2 {
-	font-size: inherit;
-	font-weight: 500;
-	margin-top: var(--s2);
 }
 #toc a {
 	padding: var(--s-5) var(--s-1);
@@ -232,6 +234,63 @@ nav a:hover {
 }
 #content h2:first-child {
 	margin-top: 0;
+}
+
+/* Showcase styling */
+
+.card {
+	display: flex;
+
+	background: white;
+    box-shadow: 0 2px 3px rgb(0 0 0 / 10%);
+    border: 1px solid #ddd;
+    margin-top: var(--s2);
+    padding: var(--s0);
+    border-radius: 3px;
+
+	gap: var(--s0);
+}
+
+.card img {
+	width: 13rem;
+}
+
+/* Big links */
+
+.big-links {
+	display: grid;
+	grid-gap: var(--s0);
+	grid-auto-rows: 1fr;
+	grid-template-columns: repeat(auto-fit, minmax(calc(var(--measure) * 0.3), 1fr));
+}
+.big-links a {
+    position: relative;
+    padding: var(--s0);
+    text-align: center;
+    border: 1px solid #ccc;
+    border-bottom: 5px solid #ccc;
+    border-radius: 3px;
+    color: var(--main-fg);
+    text-decoration: none !important;
+
+    background: white;
+}
+.big-links a:hover {
+	border-bottom: 5px solid var(--accent-bg);
+}
+.big-links a {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.big-links a p {
+	font-size: var(--font-size-small);
+}
+
+/* Footer */
+
+footer {
+	margin-top: var(--s3);
+	font-size: var(--font-size-small);
 }
 
 /* Nicer looking scrollbar. */

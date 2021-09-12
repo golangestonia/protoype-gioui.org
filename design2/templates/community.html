@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+{{ template "head.html" . }}
+<body>
+	<div class="side-by-side">
+		{{ template "nav.html" 64 }}
+
+		<div id="content">
+			<header>
+				<h1>
+					<div>Community</div>
+					<div class="subtitle">Places where you can find people working with Gio.</div>
+				</h1>
+			</header>
+
+			<div class="main-and-toc">
+				<main>
+					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi ipsam odit blanditiis vitae ratione fugit cum beatae incidunt hic nemo, veritatis eligendi itaque sapiente repudiandae qui in dicta quidem molestias.</p>
+
+					<article class="card">
+						<div>
+							<a href="#"><h2>Sourcehut</h2></a>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus labore molestias aspernatur sapiente, vel ab, voluptatem tempora quasi reprehenderit vero quod cupiditate, amet provident aperiam possimus saepe alias dolor enim!</p>
+
+							<ul>
+								<li><a href="#">General Discussion</a></li>
+								<li><a href="#">Issue Reports</a></li>
+								<li><a href="#">Mailing list</a></li>
+								<li><a href="#">Contributing</a></li>
+								<li><a href="#">Why sr.ht?</a></li>
+							</ul>
+						</div>
+						<div>
+							<img src="/static/placeholder.png" alt="">
+						</div>
+					</article>
+
+					<article class="card">
+						<div>
+							<a href="#"><h2>#gioui in Gophers Slack</h2></a>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus labore molestias aspernatur sapiente, vel ab, voluptatem tempora quasi reprehenderit vero quod cupiditate, amet provident aperiam possimus saepe alias dolor enim!</p>
+
+							<ul>
+								<li><a href="#">Signup Here</a></li>
+							</ul>
+						</div>
+						<div>
+							<img src="/static/placeholder.png" alt="">
+						</div>
+					</article>
+
+					{{ template "footer.html" }}
+				</main>
+
+				{{ template "toc.html" }}
+			</div>
+		</div>
+	</div>
+</body>
+</html>

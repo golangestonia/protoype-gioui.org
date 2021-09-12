@@ -17,11 +17,19 @@
             <li><a href="/showcase">Showcase</a></li>
             <li><a href="/community">Community</a></li>
         </ul>
+        <hr>
     </nav>
 
-    <hr>
-
     <nav id="nav-sub">
+        <h2>Primary</h2>
+        <ul>
+            {{ range $i := Iterate 3 3 }}
+            <li><a href="#">Item {{ $i }}</a></li>
+            {{ end }}
+        </ul>
+        <hr>
+
+        <h2>Secondary</h2>
         <ul>
             {{ range $i := Iterate . 50 }}
             <li><a href="#">Item {{ $i }}</a></li>
