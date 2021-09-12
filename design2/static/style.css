@@ -18,6 +18,8 @@
 	--accent-fg: #fff;
 	--accent-bg: #078AEA;
 	--accent-bg-hi: #26a3ff;
+	--accent-bg-transparent: #078aea20;
+	--accent-border: 3px solid var(--accent-bg);
 
 	--subtle-fg: #333;
 	--highlight-fg: #000;
@@ -71,14 +73,12 @@ html, body {
 html {
 	font-size: 1em;
 	font-family: Roboto, Arial, sans-serif;
-	line-height: 1.65em;
+	line-height: 1.65;
 
 	background: var(--background);
 }
 
-/* Top Navigation */
-
-/* Layouts */
+/* Layout */
 
 .side-by-side {
 	display: flex;
@@ -97,13 +97,11 @@ html {
 	margin-top: 0;
 	margin-bottom: 0;
 	font-size: var(--font-size-big);
-	line-height: 2em;
 }
 
 #content > header .subtitle {
 	font-size: var(--font-size-biggish);
 	font-weight: lighter;
-	line-height: 1.5em;
 }
 
 .main-and-toc {
@@ -165,9 +163,78 @@ main {
 	background-color: var(--thumb);
 }
 
-/* Main */
+/* Navigation styling */
 
-/* Adjustments to default behavior */
+nav {
+}
+
+nav ul {
+	list-style: none;
+	margin-left: 0;
+	margin-right: 0;
+	padding: 0;
+}
+nav ul > li {
+	display: block;
+}
+nav a {
+	display: block;
+	color: inherit;
+	text-decoration: none;
+	font-weight: 400;
+	letter-spacing: 0.02em;
+	padding: var(--s-2) var(--s0);
+}
+nav a[aria-describedby="current"] {
+	border-right: var(--accent-border);
+	font-weight: bolder;
+}
+nav a:hover {
+	text-decoration: underline;
+	color: var(--highlight-fg);
+	background: var(--accent-bg-transparent);
+}
+
+/* Table of Content styling */
+
+#toc {
+	opacity: 0.6;
+	transition: opacity 0.1s ease-in-out;
+}
+#toc:hover {
+	opacity: 1;
+}
+#toc h2 {
+	font-size: inherit;
+	font-weight: 500;
+	margin-top: var(--s2);
+}
+#toc a {
+	padding: var(--s-5) var(--s-1);
+}
+#toc a:hover {
+	background: none;
+}
+
+/* Search */
+
+#search {
+	width: 100%;
+	border: var(--border);
+	border-right: 0;
+	padding: var(--s-2) var(--s0);
+}
+
+/* Main styling */
+
+#content h2 {
+	margin-top: var(--s2);
+}
+#content h2:first-child {
+	margin-top: 0;
+}
+
+/* Nicer looking scrollbar. */
 
 .side-by-side aside {
 	scrollbar-color: var(--thumb-glass) var(--background);
