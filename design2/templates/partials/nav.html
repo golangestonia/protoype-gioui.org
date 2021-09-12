@@ -1,0 +1,27 @@
+<aside id="nav">
+    <header class="logo">
+        <a href="/">
+            <img class="icon" src="/static/logo-text.svg" alt="Gio logo">
+        </a>
+    </header>
+
+    <nav id="nav-main">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/guides">Guides</a></li>
+            <li><a href="/components">Components</a></li>
+            <li><a href="/showcase">Showcase</a></li>
+            <li><a href="/community">Community</a></li>
+        </ul>
+    </nav>
+
+    <hr>
+
+    <nav id="nav-sub">
+        <ul>
+            {{ range $i := Iterate . 50 }}
+            <li><a href="#">Item {{ $i }}</a></li>
+            {{ end }}
+        </ul>
+    </nav>
+</aside>
