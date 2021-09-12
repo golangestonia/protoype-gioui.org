@@ -169,19 +169,31 @@ main {
 
 /* Adjustments to default behavior */
 
-.side-by-side ::-webkit-scrollbar {
+.side-by-side aside {
+	scrollbar-color: var(--thumb-glass) var(--background);
+	scrollbar-width: thin;
+
+	transition: scrollbar-color 0.1s ease-in-out;
+}
+
+.side-by-side aside::-webkit-scrollbar {
 	width: var(--s-3);
 }
 
-.side-by-side ::-webkit-scrollbar-thumb {
+.side-by-side aside::-webkit-scrollbar-thumb {
 	background-color: var(--thumb-glass);
 	border-radius: var(--s-3);
 	background-clip: content-box;
 
-	transition: background 0.3s ease-in-out;
-	-webkit-transition: background 0.3s ease-in-out;
+	transition: background-color 0.1s ease-in-out;
+	-webkit-transition: background-color 0.1s ease-in-out;
 }
 
-.side-by-side :hover::-webkit-scrollbar-thumb {
+.side-by-side aside:hover {
+	scrollbar-color: var(--thumb) var(--thumb-glass);
+	scrollbar-width: thin;
+}
+
+.side-by-side aside:hover::-webkit-scrollbar-thumb {
 	background-color: var(--thumb);
 }
