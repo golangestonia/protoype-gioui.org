@@ -198,9 +198,7 @@ nav a:hover {
 nav h2 {
 	font-size: inherit;
 	font-weight: 500;
-	margin-left: var(--s0);
-	margin-top: var(--s0);
-	margin-bottom: var(--s0);
+	margin: var(--s0);
 }
 
 /* Table of Content styling */
