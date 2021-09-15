@@ -196,7 +196,20 @@ func (s *Site) loadMarkdown(url string) ([]byte, error) {
 		}
 	}
 
-	html := markdown.Render(doc, html.NewRenderer(html.RendererOptions{Flags: html.CommonFlags}))
+	opts := html.RendererOptions{
+		Flags: html.CommonFlags,
+		RenderNodeHook: func(w io.Writer, node ast.Node, entering bool) (status ast.WalkStatus, skip bool) {
+			if !entering {
+				if heading, ok := node.(*ast.Heading); ok {
+					clip := `<a class="clip" href="#` + heading.HeadingID + `">🔗</a>`
+					w.Write([]byte(clip))
+				}
+			}
+			return ast.GoToNext, false
+		},
+	}
+	renderer := html.NewRenderer(opts)
+	html := markdown.Render(doc, renderer)
 	args := map[string]interface{}{
 		"Menu":            topMenu,
 		"URL":             url,

@@ -258,6 +258,15 @@ nav h2 {
 	margin-top: 0;
 }
 
+.clip {
+	margin-left: var(--s-2);
+	opacity: 0.1;
+	text-decoration: none !important;
+}
+:hover > .clip, .clip:hover, .clip:focus {
+	opacity: 1;
+}
+
 /* Showcase styling */
 
 .card {
