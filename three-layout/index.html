@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Three Column Layout</title>
+	<script src="/~watch.js"></script>
+
+<style type="text/css">
+:root {
+	--measure:  30rem;
+	--sidebar: 10rem;
+	--toc: 10rem;
+
+	--full-width: 50rem;
+}
+
+html, body {
+	margin: 0; body: 0;
+}
+* {
+	box-sizing: border-box;
+}
+
+.with-sidebar { background: #ccc; }
+.sidebar      { background: #fcc; }
+header        { background: #ffc; }
+main          { background: #cfc; }
+.toc           { background: #ccf; }
+
+.sidebar { padding: 1rem; }
+.content { padding: 1rem; }
+
+.with-sidebar {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+
+	justify-content: center;
+}
+
+.with-sidebar > .sidebar {
+	flex-shrink: 0;
+	flex-grow: 0;
+	flex-basis: var(--sidebar);
+
+	top: 0px;
+	position: sticky;
+	height: 100vh;
+	overflow-y: auto;
+}
+
+.with-header {
+	display: flex;
+	flex-direction: column;
+	flex: 0 1 auto;
+	max-width: calc(var(--measure) + var(--toc));
+}
+
+.with-toc {
+	display: flex;
+	flex-direction: row;
+}
+.toc {
+	flex-shrink: 1;
+	flex-grow: 0;
+	flex-basis: var(--toc);
+}
+main {
+	flex-shrink: 1;
+	flex-grow: 1;
+	flex-basis: var(--measure);
+}
+
+@media(max-width: 45rem){ /* sidebar + main + toc  - threshold */
+	.with-toc {
+		flex-direction: column-reverse;
+	}
+	.toc {
+	}
+}
+
+@media(max-width: 35rem){ /* sidebar + main - threshold */
+	.with-sidebar {
+		flex-direction: column;
+	}
+	.with-sidebar > .sidebar {
+		position: relative;
+		height: initial;
+		overflow: initial;
+	}
+}
+
+</style>
+</head>
+<body>
+	<div class="with-sidebar">
+		<div class="sidebar">
+			<nav>
+				<ul id="menu"></ul>
+			</nav>
+		</div>
+		<div class="with-header">
+			<header><h1>Lorem ipsum dolorem</h1></header>
+			<div class="with-toc">
+				<main id="page-data">
+				</main>
+				<nav class="toc">
+					<ul>
+						<li>Alpha</li>
+						<li>Beta</li>
+						<li>Gamma</li>
+						<li>Delta</li>
+						<li>Iota</li>
+						<li>Kappa</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+
+<script type="text/javascript">
+const menu = document.getElementById("menu");
+if(menu){
+	for(let i = 0; i < 30; i++) {
+		let el = document.createElement("li");
+		el.textContent = "Item " + i;
+		menu.appendChild(el);
+	}
+}
+
+const page = document.getElementById("page-data");
+if(page){
+	for(let i = 0; i < 30; i++) {
+		let el = document.createElement("p");
+		el.textContent = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+		page.appendChild(el);
+	}
+}
+</script>
+</body>
+</html>
